@@ -36,5 +36,5 @@ const getRndDecimal = (min, max, decimal) => {
   return +rndDecimal.toFixed(decimal);
 };
 
-getRndInteger (8, 1);
+getRndInteger(8, 1);
 getRndDecimal(1.1, 1.2, 3);
