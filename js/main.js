@@ -13,7 +13,7 @@ const getRndInteger = (min, max) => {
   }
 
   return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
-}
+};
 
 // Функция возвращающая случайное число в заданном диапазоне с указанием количества знаков после запятой
 const getRndDecimal = (min, max, decimal) => {
@@ -34,7 +34,7 @@ const getRndDecimal = (min, max, decimal) => {
 
   rndDecimal = Math.random() * (max - min) + min;
   return +rndDecimal.toFixed(decimal);
-}
+};
 
 getRndInteger (8, 1);
 getRndDecimal(1.1, 1.2, 3);
