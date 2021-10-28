@@ -1,40 +1,22 @@
 // Функция возвращающая случайное целое число в заданном диапазоне
-const getRndInteger = (min, max) => {
-  if (min < 0 || max < 0) {
-    return 'Ошибка. Значения в диапазоне должны быть положительными числами!';
-  }
+const getRndInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
+  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
 
-  if (min === max) {
-    return min;
-  }
+  const result = Math.random() * (upper - lower + 1) + lower;
 
-  if (min > max) {
-    return Math.floor(Math.random() * (Math.floor(min) - Math.ceil(max) + 1) + Math.ceil(max));
-  }
-
-  return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
+  return Math.floor(result);
 };
 
 // Функция возвращающая случайное число в заданном диапазоне с указанием количества знаков после запятой
-const getRndDecimal = (min, max, decimal) => {
-  if (min < 0 || max < 0) {
-    return 'Ошибка. Значения в диапазоне должны быть положительными числами!';
-  }
+const getRndFloat = (a, b, digits = 1) => {
+  const lower = Math.min(Math.abs(a), Math.abs(b));
+  const upper = Math.max(Math.abs(a), Math.abs(b));
 
-  if (min === max) {
-    return min;
-  }
+  const result = Math.random() * (upper - lower) + lower;
 
-  let rndDecimal;
-
-  if (min > max) {
-    rndDecimal = Math.random() * (min - max) + max;
-    return +rndDecimal.toFixed(decimal);
-  }
-
-  rndDecimal = Math.random() * (max - min) + min;
-  return +rndDecimal.toFixed(decimal);
+  return result.toFixed(digits);
 };
 
 getRndInteger(8, 1);
-getRndDecimal(1.1, 1.2, 3);
+getRndFloat(1.1, 1.2, 3);
