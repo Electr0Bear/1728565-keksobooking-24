@@ -27,22 +27,26 @@ const DESCRIPTION = ['Новый ремонт', 'Живописный вид', '
 const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
 const getPosts = (uniqueObjects) => {
-  let post = [];
+  const post = [];
 
   // Генерирует числа под ссылки на аватары авторов
-  let rndIntArray = [];
+  const rndIntArray = [];
   while (rndIntArray.length < uniqueObjects) {
     let rndInt = '' + getRndInteger(1, uniqueObjects);
-    if (rndInt < 10) rndInt = '0' + rndInt;
-    if (rndIntArray.indexOf(rndInt) === -1) rndIntArray.push(rndInt);
+    if (rndInt < 10) {
+      rndInt = '0' + rndInt;
+    }
+    if (rndIntArray.indexOf(rndInt) === -1) {
+      rndIntArray.push(rndInt);
+    }
   }
 
   // Основной цикл генерации объекта
   for (let i = 0; i < uniqueObjects; i++) {
 
-    let latitude = getRndFloat(35.65000, 35.70000, 5);
-    let longitude = getRndFloat(139.70000, 139.80000, 5);
-    let type = TYPES[getRndInteger(0, 4)];
+    const latitude = getRndFloat(35.65000, 35.70000, 5);
+    const longitude = getRndFloat(139.70000, 139.80000, 5);
+    const type = TYPES[getRndInteger(0, 4)];
     let rooms;
     let title = TITLE_1[getRndInteger(0, TITLE_1.length - 1)];
     switch (type) {
@@ -100,7 +104,7 @@ const getPosts = (uniqueObjects) => {
         lng: longitude,
       },
     });
-  }
+  };
   return post;
 }
 
