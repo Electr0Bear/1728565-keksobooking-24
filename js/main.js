@@ -18,40 +18,13 @@ const getRndFloat = (a, b, digits = 1) => {
   return result.toFixed(digits);
 };
 
-let posts = [{
-  author: {
-    avatar: 'img/avatars/user{{xx}}.png',
-  },
-
-  offer: {
-    title: 'заголовок оффера',
-    address: '{{location.lat}}, {{location.lng}}',
-    price: 5000,
-    type: 'flat',
-    rooms: 3,
-    guests: 2,
-    checkin: '12:00',
-    checkout: '14:00',
-    features: ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'],
-    description: 'хорошая квартира',
-    photos: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
-  },
-
-  location: {
-    lat: 35.65000,
-    lng: 139.70000,
-  },
-}, ]
-
 const TITLE_1 = ['Роскошн', 'Просторн', 'Доступн', 'Комфортабельн', 'Элегантн'];
 const TITLE_2 = ['дворец', 'квартира', 'дом', 'бунгало', 'номер в отеле'];
-
 const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const CHECK_IN_OUT_TIME = ['12:00', '13:00', '14:00'];
 const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 const DESCRIPTION = ['Новый ремонт', 'Живописный вид', 'Тихий район', 'В шаговой доступности от метро', 'Можно с животными', 'Удобный паркинг', 'Рядом есть парк'];
 const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
-
 
 const getPosts = (uniqueObjects) => {
   let post = [];
@@ -64,8 +37,6 @@ const getPosts = (uniqueObjects) => {
     if (rndIntArray.indexOf(rndInt) === -1) rndIntArray.push(rndInt);
   }
 
-
-
   // Основной цикл генерации объекта
   for (let i = 0; i < uniqueObjects; i++) {
 
@@ -77,34 +48,33 @@ const getPosts = (uniqueObjects) => {
     switch (type) {
       case 'palace':
         rooms = getRndInteger(10, 20);
-        title += 'ый' + ' ' + TITLE_2[0];
+        title += 'ый ' + TITLE_2[0];
         break;
       case 'flat':
         rooms = getRndInteger(1, 4);
-        title += 'ая' + ' ' + TITLE_2[1];
+        title += 'ая ' + TITLE_2[1];
         break;
       case 'house':
         rooms = getRndInteger(1, 6);
-        title += 'ый' + ' ' + TITLE_2[2];
+        title += 'ый ' + TITLE_2[2];
         break;
       case 'bungalow':
         rooms = getRndInteger(1, 2);
-        title += 'ое' + ' ' + TITLE_2[3];
+        title += 'ое ' + TITLE_2[3];
         break;
       case 'hotel':
         rooms = getRndInteger(1, 2);
-        title += 'ый' + ' ' + TITLE_2[4];
+        title += 'ый ' + TITLE_2[4];
         break;
       default: rooms = 1;
     };
-    let price = rooms * getRndInteger(1000, 5000);
-    let guests = rooms * getRndInteger(1, 3);
-    let checkin = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.length - 1)];
-    let checkout = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.indexOf(checkin))];
-    let features = [... new Set (Array.from({length: getRndInteger(1, FEATURES.length)}, () => FEATURES[getRndInteger(0, FEATURES.length - 1)]))];
-    let description = [... new Set (Array.from({length: getRndInteger(1, DESCRIPTION.length)}, () => DESCRIPTION[getRndInteger(0, DESCRIPTION.length - 1)]))];
-    let photos = [... new Set (Array.from({length: getRndInteger(1, PHOTOS.length)}, () => PHOTOS[getRndInteger(0, PHOTOS.length - 1)]))];
-
+    const price = rooms * getRndInteger(1000, 5000);
+    const guests = rooms * getRndInteger(1, 3);
+    const checkin = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.length - 1)];
+    const checkout = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.indexOf(checkin))];
+    const features = [... new Set (Array.from({length: getRndInteger(1, FEATURES.length)}, () => FEATURES[getRndInteger(0, FEATURES.length - 1)]))];
+    const description = [... new Set (Array.from({length: getRndInteger(1, DESCRIPTION.length)}, () => DESCRIPTION[getRndInteger(0, DESCRIPTION.length - 1)]))];
+    const photos = [... new Set (Array.from({length: getRndInteger(1, PHOTOS.length)}, () => PHOTOS[getRndInteger(0, PHOTOS.length - 1)]))];
 
     post.push({
       author: {
@@ -133,6 +103,5 @@ const getPosts = (uniqueObjects) => {
   }
   return post;
 }
-
 
 console.log(getPosts(10));
