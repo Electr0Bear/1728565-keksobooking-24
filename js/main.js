@@ -71,7 +71,7 @@ const getPosts = (uniqueObjects) => {
         title += 'ый ' + TITLE_2[4];
         break;
       default: rooms = 1;
-    };
+    }
     const price = rooms * getRndInteger(1000, 5000);
     const guests = rooms * getRndInteger(1, 3);
     const checkin = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.length - 1)];
@@ -104,8 +104,8 @@ const getPosts = (uniqueObjects) => {
         lng: longitude,
       },
     });
-  };
+  }
   return post;
-}
+};
 
 console.log(getPosts(10));
