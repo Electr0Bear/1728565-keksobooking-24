@@ -42,6 +42,8 @@ const getPosts = (uniqueObjects) => {
     }
   }
 
+  const getRndElements = array => [... new Set (Array.from({length: getRndInteger(1, array.length)}, () => array[getRndInteger(0, array.length - 1)]))];
+
   // Основной цикл генерации объекта
   for (let i = 0; i < uniqueObjects; i++) {
 
@@ -77,9 +79,10 @@ const getPosts = (uniqueObjects) => {
     const guests = rooms * getRndInteger(1, 3);
     const checkin = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.length - 1)];
     const checkout = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.indexOf(checkin))];
-    const features = [... new Set (Array.from({length: getRndInteger(1, FEATURES.length)}, () => FEATURES[getRndInteger(0, FEATURES.length - 1)]))];
-    const description = [... new Set (Array.from({length: getRndInteger(1, DESCRIPTION.length)}, () => DESCRIPTION[getRndInteger(0, DESCRIPTION.length - 1)]))];
-    const photos = [... new Set (Array.from({length: getRndInteger(1, PHOTOS.length)}, () => PHOTOS[getRndInteger(0, PHOTOS.length - 1)]))];
+
+    // const features = getRndElements(FEATURES);
+    // const description = getRndElements(DESCRIPTION);
+    // const photos = getRndElements(PHOTOS);
 
     post.push({
       author: {
@@ -95,9 +98,9 @@ const getPosts = (uniqueObjects) => {
         guests: guests,
         checkin: checkin,
         checkout: checkout,
-        features: features,
-        description: description,
-        photos: photos,
+        features: getRndElements(FEATURES),
+        description: getRndElements(DESCRIPTION),
+        photos: getRndElements(PHOTOS),
       },
 
       location: {
