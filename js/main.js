@@ -35,7 +35,8 @@ const getRndFloat = (numA, numB, digits = 1) => {
 
 // Функиця, возвращающая массив из случаного набора уникальных элементов от передаваемого массива
 const getRndElements = array => {
-  return [...new Set(Array.from({length: getRndInteger(1, array.length)}, () => array[getRndInteger(0, array.length - 1)]))];
+  let rndArr = [...new Set(Array.from({length: getRndInteger(1, array.length)}, () => array[getRndInteger(0, array.length - 1)]))];
+  return rndArr;
 }
 
 // Функия генерации объекта
@@ -79,10 +80,10 @@ const getObject = (counter) => {
   return post;
 };
 
-const generateObjects = numOfObjects => {
+const generateObjects = (numOfObjects) => {
   const postsArr = [];
 
-  for (let count = 1; count <  numOfObjects + 1; count++) {
+  for (let count = 1; count <= numOfObjects; count++) {
     postsArr.push(getObject(count));
   }
   return postsArr;
