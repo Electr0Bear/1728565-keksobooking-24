@@ -6,11 +6,11 @@ const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'condit
 const DESCRIPTION = ['Новый ремонт', 'Живописный вид', 'Тихий район', 'В шаговой доступности от метро', 'Можно с животными', 'Удобный паркинг', 'Рядом есть парк'];
 const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 const types = {
-  'palace': 'ый ' + TITLE_2[0],
-  'flat': 'ая ' + TITLE_2[1],
-  'house': 'ый ' + TITLE_2[2],
-  'bungalow': 'ое ' + TITLE_2[3],
-  'hotel': 'ый ' + TITLE_2[4],
+  palace: 'ый ' + TITLE_2[0],
+  flat: 'ая ' + TITLE_2[1],
+  house: 'ый ' + TITLE_2[2],
+  bungalow: 'ое ' + TITLE_2[3],
+  hotel: 'ый ' + TITLE_2[4],
 };
 
 // Функция возвращающая случайное целое число в заданном диапазоне
@@ -34,15 +34,17 @@ const getRndFloat = (numA, numB, digits = 1) => {
 };
 
 // Функиця, возвращающая массив из случаного набора уникальных элементов от передаваемого массива
-const getRndElements = array => {
-  let rndArr = [...new Set(Array.from({length: getRndInteger(1, array.length)}, () => array[getRndInteger(0, array.length - 1)]))];
+const getRndElements = (array) => {
+  const rndArr = [...new Set(Array.from({length: getRndInteger(1, array.length)}, () => array[getRndInteger(0, array.length - 1)]))];
   return rndArr;
-}
+};
 
 // Функия генерации объекта
 const getObject = (counter) => {
-  counter < 10 ? counter = '0' + counter : counter;
-  const avatar = 'img/avatars/user' + counter + '.png';
+  let avatar = `img/avatars/user${counter}.png`;
+  if (counter < 10) {
+    avatar = `img/avatars/user0${counter}.png`;
+  }
   const latitude = getRndFloat(35.65000, 35.70000, 5);
   const longitude = getRndFloat(139.70000, 139.80000, 5);
   const type = TYPES[getRndInteger(0, 4)];
@@ -89,4 +91,4 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-generateObjects(10);
+console.log(generateObjects(10));
