@@ -6,11 +6,11 @@ const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'condit
 const DESCRIPTION = ['Новый ремонт', 'Живописный вид', 'Тихий район', 'В шаговой доступности от метро', 'Можно с животными', 'Удобный паркинг', 'Рядом есть парк'];
 const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 const types = {
-  palace: 'ый ' + TITLE_2[0],
-  flat: 'ая ' + TITLE_2[1],
-  house: 'ый ' + TITLE_2[2],
-  bungalow: 'ое ' + TITLE_2[3],
-  hotel: 'ый ' + TITLE_2[4],
+  palace: `ый ${TITLE_2[0]}`,
+  flat: `ая ${TITLE_2[1]}`,
+  house: `ый ${TITLE_2[2]}`,
+  bungalow: `ое ${TITLE_2[3]}`,
+  hotel: `ый ${TITLE_2[4]}`,
 };
 
 // Функция возвращающая случайное целое число в заданном диапазоне
@@ -62,7 +62,7 @@ const getObject = (counter) => {
 
     offer: {
       title: title,
-      address: latitude + ', ' + longitude,
+      address: `${latitude}, ${longitude}`,
       price: price,
       type: type,
       rooms: rooms,
@@ -91,4 +91,4 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-console.log(generateObjects(10));
+generateObjects(10);
