@@ -1,3 +1,11 @@
+const TITLE_1 = ['Роскошн', 'Просторн', 'Доступн', 'Комфортабельн', 'Элегантн'];
+const TITLE_2 = ['дворец', 'квартира', 'дом', 'бунгало', 'номер в отеле'];
+const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
+const CHECK_IN_OUT_TIME = ['12:00', '13:00', '14:00'];
+const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const DESCRIPTION = ['Новый ремонт', 'Живописный вид', 'Тихий район', 'В шаговой доступности от метро', 'Можно с животными', 'Удобный паркинг', 'Рядом есть парк'];
+const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
+
 // Функция возвращающая случайное целое число в заданном диапазоне
 const getRndInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -18,13 +26,6 @@ const getRndFloat = (a, b, digits = 1) => {
   return result.toFixed(digits);
 };
 
-const TITLE_1 = ['Роскошн', 'Просторн', 'Доступн', 'Комфортабельн', 'Элегантн'];
-const TITLE_2 = ['дворец', 'квартира', 'дом', 'бунгало', 'номер в отеле'];
-const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-const CHECK_IN_OUT_TIME = ['12:00', '13:00', '14:00'];
-const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-const DESCRIPTION = ['Новый ремонт', 'Живописный вид', 'Тихий район', 'В шаговой доступности от метро', 'Можно с животными', 'Удобный паркинг', 'Рядом есть парк'];
-const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
 
 const getPosts = (uniqueObjects) => {
   const post = [];
