@@ -50,7 +50,7 @@ const getPosts = (uniqueObjects) => {
     'house': 'ый ' + TITLE_2[2],
     'bungalow': 'ое ' + TITLE_2[3],
     'hotel': 'ый ' + TITLE_2[4],
-  }
+  };
 
   // Основной цикл генерации объекта
   for (let i = 0; i < uniqueObjects; i++) {
