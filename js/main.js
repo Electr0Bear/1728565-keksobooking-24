@@ -14,9 +14,9 @@ const types = {
 };
 
 // Функция возвращающая случайное целое число в заданном диапазоне
-const getRndInteger = (numA, numB) => {
-  const lower = Math.ceil(Math.min(Math.abs(numA), Math.abs(numB)));
-  const upper = Math.floor(Math.max(Math.abs(numA), Math.abs(numB)));
+const getRndInteger = (min, max) => {
+  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
 
   const result = Math.random() * (upper - lower + 1) + lower;
 
@@ -24,9 +24,9 @@ const getRndInteger = (numA, numB) => {
 };
 
 // Функция возвращающая случайное число в заданном диапазоне с указанием количества знаков после запятой
-const getRndFloat = (numA, numB, digits = 1) => {
-  const lower = Math.min(Math.abs(numA), Math.abs(numB));
-  const upper = Math.max(Math.abs(numA), Math.abs(numB));
+const getRndFloat = (min, max, digits = 1) => {
+  const lower = Math.min(Math.abs(min), Math.abs(max));
+  const upper = Math.max(Math.abs(min), Math.abs(max));
 
   const result = Math.random() * (upper - lower) + lower;
 
@@ -41,10 +41,8 @@ const getRndElements = (array) => {
 
 // Функия генерации объекта
 const getObject = (counter) => {
-  let avatar = `img/avatars/user${counter}.png`;
-  if (counter < 10) {
-    avatar = `img/avatars/user0${counter}.png`;
-  }
+  counter < 10 ? counter = `0${counter}` : counter
+  const avatar = `img/avatars/user${counter}.png`;
   const latitude = getRndFloat(35.65000, 35.70000, 5);
   const longitude = getRndFloat(139.70000, 139.80000, 5);
   const type = TYPES[getRndInteger(0, 4)];
@@ -55,7 +53,7 @@ const getObject = (counter) => {
   const checkin = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.length - 1)];
   const checkout = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.indexOf(checkin))];
 
-  const post = {
+  return {
     author: {
       avatar: avatar,
     },
@@ -79,7 +77,6 @@ const getObject = (counter) => {
       lng: longitude,
     },
   };
-  return post;
 };
 
 const generateObjects = (numOfObjects) => {
@@ -91,4 +88,4 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-generateObjects(10);
+console.log(generateObjects(10));
