@@ -41,7 +41,7 @@ const getRndElements = (array) => {
 
 // Функия генерации объекта
 const getObject = (counter) => {
-  counter < 10 ? counter = `0${counter}` : counter
+  counter < 10 ? counter = `0${counter}` : counter;
   const avatar = `img/avatars/user${counter}.png`;
   const latitude = getRndFloat(35.65000, 35.70000, 5);
   const longitude = getRndFloat(139.70000, 139.80000, 5);
@@ -88,4 +88,4 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-console.log(generateObjects(10));
+generateObjects(10);
