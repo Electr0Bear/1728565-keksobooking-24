@@ -10,5 +10,5 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-const generatedObject = generateObjects(1);
-generatePost(generatedObject[0]);
+const generatedObjects = generateObjects(10);
+generatePost(generatedObjects[0]);
