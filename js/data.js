@@ -55,4 +55,13 @@ const getObject = (counter) => {
   };
 };
 
-export {getObject};
+const generateObjects = (numOfObjects) => {
+  const postsArr = [];
+
+  for (let count = 1; count <= numOfObjects; count++) {
+    postsArr.push(getObject(count));
+  }
+  return postsArr;
+};
+
+export {generateObjects};
