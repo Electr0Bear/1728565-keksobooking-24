@@ -1,5 +1,5 @@
 import {
-  generateObjects
+  getObject
 } from './data.js';
 
 const typeOfEstate = {
@@ -13,18 +13,17 @@ const typeOfEstate = {
 const map = document.querySelector('#map-canvas');
 const template = document.querySelector('#card').content.querySelector('.popup');
 
-const showPosts = generateObjects(1);
-
-showPosts.forEach(({author, offer}) => {
+const generatePost = (count) => {
+  const {author, offer} = getObject(count);
   const newPost = template.cloneNode(true);
   newPost.querySelector('.popup__avatar').src = author.avatar;
   newPost.querySelector('.popup__title').textContent = offer.title;
   newPost.querySelector('.popup__text--address').textContent = offer.address;
   newPost.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
   newPost.querySelector('.popup__type').textContent = typeOfEstate[offer.type];
-  offer.rooms === 1
-    ? newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнатa для ${offer.guests} гостей`
-    : newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
+  offer.rooms === 1 ?
+    newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнатa для ${offer.guests} гостей` :
+    newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   if (offer.rooms >= 5) {
     newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнат для ${offer.guests} гостей`;
   }
@@ -59,4 +58,6 @@ showPosts.forEach(({author, offer}) => {
   });
 
   map.appendChild(newPost);
-});
+};
+
+export {generatePost};
