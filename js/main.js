@@ -1,2 +1,2 @@
-
+import './advertisment.js';
 
