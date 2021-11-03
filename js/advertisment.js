@@ -17,11 +17,11 @@ const showPosts = generateObjects(1);
 
 showPosts.forEach(({author, offer}) => {
   const newPost = template.cloneNode(true);
-  newPost.querySelector('.popup__avatar').src = `${author.avatar}`;
-  newPost.querySelector('.popup__title').textContent = `${offer.title}`;
-  newPost.querySelector('.popup__text--address').textContent = `${offer.address}`;
+  newPost.querySelector('.popup__avatar').src = author.avatar;
+  newPost.querySelector('.popup__title').textContent = offer.title;
+  newPost.querySelector('.popup__text--address').textContent = offer.address;
   newPost.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
-  newPost.querySelector('.popup__type').textContent = `${typeOfEstate[offer.type]}`;
+  newPost.querySelector('.popup__type').textContent = typeOfEstate[offer.type];
   offer.rooms === 1
     ? newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнатa для ${offer.guests} гостей`
     : newPost.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
@@ -40,7 +40,7 @@ showPosts.forEach(({author, offer}) => {
     }
   });
 
-  newPost.querySelector('.popup__description').textContent = offer.description.join(', ');
+  newPost.querySelector('.popup__description').textContent = offer.description;
 
   const postPhotosSection = newPost.querySelector('.popup__photos');
   const photos = offer.photos;
@@ -51,6 +51,12 @@ showPosts.forEach(({author, offer}) => {
   for (let iterator = 0; iterator < postPhotosArray.length; iterator++) {
     postPhotosArray[iterator].src = `${photos[iterator]}`;
   }
+
+  Array.from(newPost.children).forEach((child) => {
+    if (child.innerHTML.trim() === '') {
+      child.remove();
+    }
+  });
 
   map.appendChild(newPost);
 });

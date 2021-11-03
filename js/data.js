@@ -28,6 +28,9 @@ const getObject = (counter) => {
   const guests = rooms * getRndInteger(1, 3);
   const checkin = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.length - 1)];
   const checkout = CHECK_IN_OUT_TIME[getRndInteger(0, CHECK_IN_OUT_TIME.indexOf(checkin))];
+  const features = getRndElements(FEATURES);
+  const description = getRndElements(DESCRIPTION).join(', ');
+  const photos = getRndElements(PHOTOS);
 
   return {
     author: {
@@ -43,9 +46,9 @@ const getObject = (counter) => {
       guests: guests,
       checkin: checkin,
       checkout: checkout,
-      features: getRndElements(FEATURES),
-      description: getRndElements(DESCRIPTION),
-      photos: getRndElements(PHOTOS),
+      features: features,
+      description: description,
+      photos: photos,
     },
 
     location: {
