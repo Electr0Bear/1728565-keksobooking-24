@@ -1,6 +1,6 @@
 import {generatePost} from './advertisment.js';
 
-const generateObjects = (numOfObjects) => {
+const generatePosts = (numOfObjects) => {
   const postsArr = [];
 
   for (let count = 1; count <= numOfObjects; count++) {
@@ -9,4 +9,4 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-generateObjects(1);
+generatePosts(1);

@@ -51,11 +51,11 @@ const generatePost = (count) => {
     postPhotosArray[iterator].src = `${photos[iterator]}`;
   }
 
-  Array.from(newPost.children).forEach((child) => {
-    if (child.innerHTML.trim() === '') {
-      child.remove();
-    }
-  });
+  // Array.from(newPost.children).forEach((child) => {
+  //   if (child.innerHTML.trim() === '') {
+  //     child.remove();
+  //   }
+  // });
 
   map.appendChild(newPost);
 };
