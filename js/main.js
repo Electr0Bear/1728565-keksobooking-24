@@ -1,3 +1,4 @@
+import {generatePost} from './advertisment.js';
 import {getObject} from './data.js';
 
 const generateObjects = (numOfObjects) => {
@@ -9,4 +10,5 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-generateObjects(10);
+const generatedObjects = generateObjects(10);
+generatePost(generatedObjects[0]);
