@@ -1,7 +1,3 @@
-import {
-  getObject
-} from './data.js';
-
 const typeOfEstate = {
   palace: 'Дворец',
   flat: 'Квартира',
@@ -13,8 +9,8 @@ const typeOfEstate = {
 const map = document.querySelector('#map-canvas');
 const template = document.querySelector('#card').content.querySelector('.popup');
 
-const generatePost = (count) => {
-  const {author, offer} = getObject(count);
+const generatePost = (object) => {
+  const {author, offer} = object;
   const newPost = template.cloneNode(true);
   newPost.querySelector('.popup__avatar').src = author.avatar;
   newPost.querySelector('.popup__title').textContent = offer.title;
