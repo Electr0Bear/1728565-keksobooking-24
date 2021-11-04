@@ -1,6 +1,6 @@
 import {generatePost} from './advertisment.js';
 import {getObject} from './data.js';
-import {setActive} from './active-elements.js';
+import {setStatus} from './active-elements.js';
 
 const generateObjects = (numOfObjects) => {
   const postsArr = [];
@@ -14,4 +14,4 @@ const generateObjects = (numOfObjects) => {
 const generatedObjects = generateObjects(10);
 generatePost(generatedObjects[0]);
 
-setActive(false);
+setStatus(false);

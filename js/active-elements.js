@@ -3,14 +3,9 @@ const adFieldsets = document.querySelectorAll('.ad-form-header, .ad-form__elemen
 const mapForm = document.querySelector('.map__filters');
 const mapFilters = document.querySelectorAll('.map__filter, .map__features');
 
-const setActive = (status) => {
-  if (status) {
-    adForm.classList.remove('ad-form--disabled');
-    mapForm.classList.remove('map__filters--disabled');
-  } else {
-    adForm.classList.add('ad-form--disabled');
-    mapForm.classList.add('map__filters--disabled');
-  }
+const setStatus = (status) => {
+  adForm.classList.toggle('ad-form--disabled');
+  mapForm.classList.toggle('map__filters--disabled');
 
   adFieldsets.forEach((filter) => {
     filter.disabled = !status;
@@ -20,4 +15,4 @@ const setActive = (status) => {
   });
 };
 
-export {setActive};
+export {setStatus};
