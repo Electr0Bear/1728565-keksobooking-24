@@ -14,4 +14,4 @@ const generateObjects = (numOfObjects) => {
 const generatedObjects = generateObjects(10);
 generatePost(generatedObjects[0]);
 
-setStatus(true);
+setStatus(false);
