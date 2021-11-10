@@ -1,6 +1,7 @@
 import {generatePost} from './advertisment.js';
 import {getObject} from './data.js';
 import {setStatus} from './active-elements.js';
+import './form.js';
 
 const generateObjects = (numOfObjects) => {
   const postsArr = [];
