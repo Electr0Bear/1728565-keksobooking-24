@@ -14,13 +14,14 @@ title.addEventListener('invalid', () => {
   }
 });
 
-propertyType.addEventListener('change', (evt) => {
-  evt.preventDefault();
-  return propertyType.value;
+price.addEventListener('invalid', () => {
+  if (price.validity.valueMissing) {
+    price.setCustomValidity('Обязательное поле');
+  } else if (price.validity.rangeUnderflow) {
+    price.setCustomValidity(`Для выбранного типа жилья стоимость не может быть меньше ${price.min}`);
+  } else if (price.validity.rangeOverflow) {
+    price.setCustomValidity('Стоимость не должна превышать 1 000 000');
+  } else {
+    price.setCustomValidity('');
+  }
 });
-
-const setPrice = () => {
-
-}
-
-setPrice();
