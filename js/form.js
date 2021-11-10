@@ -1,3 +1,4 @@
+const form = document.querySelector('.ad-form__submit');
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
@@ -8,6 +9,8 @@ const propertyPrices = {
   house: 5000,
   palace: 10000,
 };
+const roomNumber = document.querySelector('#room_number');
+const guestNumber = document.querySelector('#capacity');
 
 title.addEventListener('invalid', () => {
   if (title.validity.tooShort) {
@@ -46,3 +49,32 @@ propertyType.addEventListener('change', () => {
   price.min = propertyPrices[currentType];
   price.placeholder = propertyPrices[currentType];
 });
+
+const checkRoomCapacity = () => {
+  const rooms = +roomNumber.value;
+  const guests = +guestNumber.value;
+  if (rooms === 100 && guests !== 0) {
+    console.log('1 ' + rooms, guests);
+    guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Данное помещение не подходит для размещения гостей');
+    console.log(guestNumber.checkValidity());
+  } else if (guests > rooms) {
+    console.log('2 ' + rooms, guests);
+    guestNumber.setCustomValidity(`Недопустимое количество гостей для выбранного количества комнат. Допускается гостей: не более ${roomNumber.value}`);
+    console.log(guestNumber.checkValidity());
+  } else {
+    console.log('3 ' + rooms, guests);
+    guestNumber.setCustomValidity('');
+    console.log(guestNumber.checkValidity());
+  }
+
+  return guestNumber.checkValidity();
+};
+
+
+
+form.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  checkRoomCapacity();
+});
+
+
