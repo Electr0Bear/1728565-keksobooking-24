@@ -1,4 +1,5 @@
 const form = document.querySelector('.ad-form');
+const formSubmitBtn = document.querySelector('.ad-form__submit');
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
@@ -51,8 +52,8 @@ propertyType.addEventListener('change', () => {
 });
 
 const checkRoomCapacity = () => {
-  const rooms = roomNumber.value;
-  const guests = guestNumber.value;
+  const rooms = +roomNumber.value;
+  const guests = +guestNumber.value;
   if (rooms === 100 && guests !== 0) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Данное помещение не подходит для размещения гостей');
   } else if (rooms < guests) {
