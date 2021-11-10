@@ -1,6 +1,7 @@
 const form = document.querySelector('.ad-form');
 const formSubmitBtn = document.querySelector('.ad-form__submit');
 const title = document.querySelector('#title');
+const address = document.querySelector('#address');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
 const propertyPrices = {
@@ -22,6 +23,14 @@ title.addEventListener('invalid', () => {
     title.setCustomValidity('Обязательное поле');
   } else {
     title.setCustomValidity('');
+  }
+});
+
+address.addEventListener('invalid', () => {
+  if (address.validity.valueMissing) {
+    address.setCustomValidity('Обязательное поле');
+  } else {
+    address.setCustomValidity('');
   }
 });
 
@@ -68,10 +77,13 @@ const checkRoomCapacity = () => {
 };
 
 form.addEventListener('submit', (evt) => {
-  checkRoomCapacity();
   if (!checkRoomCapacity()) {
     evt.preventDefault();
   }
 });
 
+
+formSubmitBtn.addEventListener('click', () => {
+  checkRoomCapacity();
+});
 
