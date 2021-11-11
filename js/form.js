@@ -1,5 +1,4 @@
 const title = document.querySelector('#title');
-const address = document.querySelector('#address');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
 const PropertyPrices = {
@@ -14,17 +13,11 @@ const guestNumber = document.querySelector('#capacity');
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 
-title.addEventListener('invalid', () => {
+title.addEventListener('input', () => {
   title.setCustomValidity('');
   if (title.validity.tooShort) {
     title.setCustomValidity('Заголовок должен состоять минимум из 20 символов');
-  } else if (title.validity.valueMissing) {
-    title.setCustomValidity('Обязательное поле');
   }
-});
-
-address.addEventListener('invalid', () => {
-  address.setCustomValidity(address.validity.valueMissing ? 'Обязательное поле' : '');
 });
 
 price.addEventListener('input', () => {
@@ -35,12 +28,6 @@ price.addEventListener('input', () => {
     price.setCustomValidity('Стоимость не должна превышать 1 000 000');
   }
   price.reportValidity();
-});
-
-price.addEventListener('invalid', () => {
-  price.validity.valueMissing ?
-    price.setCustomValidity('Обязательное поле')
-    : false;
 });
 
 propertyType.addEventListener('change', () => {
