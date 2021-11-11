@@ -24,9 +24,7 @@ title.addEventListener('invalid', () => {
 });
 
 address.addEventListener('invalid', () => {
-  address.validity.valueMissing ?
-    address.setCustomValidity('Обязательное поле')
-    : address.setCustomValidity('');
+  address.setCustomValidity(address.validity.valueMissing ? 'Обязательное поле' : '');
 });
 
 price.addEventListener('input', () => {
@@ -75,9 +73,7 @@ guestNumber.addEventListener('change', () => {
 });
 
 const timeTableHandler = (currentInput, targetInput) => {
-  targetInput.value !== currentInput.value ?
-    targetInput.value = currentInput.value
-    : false;
+  targetInput.value = currentInput.value;
 };
 
 timeIn.addEventListener('change', (evt) => {
