@@ -67,3 +67,4 @@ timeIn.addEventListener('change', (evt) => {
 timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
 });
+
