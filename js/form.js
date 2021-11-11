@@ -4,7 +4,7 @@ const title = document.querySelector('#title');
 const address = document.querySelector('#address');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
-const propertyPrices = {
+const PROPERTY_PRICES = {
   bungalow: 0,
   flat: 1000,
   hotel: 3000,
@@ -56,8 +56,8 @@ price.addEventListener('invalid', () => {
 
 propertyType.addEventListener('change', () => {
   const currentType = propertyType.value;
-  price.min = propertyPrices[currentType];
-  price.placeholder = propertyPrices[currentType];
+  price.min = PROPERTY_PRICES[currentType];
+  price.placeholder = PROPERTY_PRICES[currentType];
 });
 
 const checkRoomCapacity = () => {
