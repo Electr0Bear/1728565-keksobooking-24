@@ -27,11 +27,9 @@ title.addEventListener('invalid', () => {
 });
 
 address.addEventListener('invalid', () => {
-  if (address.validity.valueMissing) {
-    address.setCustomValidity('Обязательное поле');
-  } else {
-    address.setCustomValidity('');
-  }
+  address.validity.valueMissing ?
+    address.setCustomValidity('Обязательное поле')
+    : address.setCustomValidity('');
 });
 
 price.addEventListener('input', () => {
@@ -49,8 +47,6 @@ price.addEventListener('input', () => {
 price.addEventListener('invalid', () => {
   if (price.validity.valueMissing) {
     price.setCustomValidity('Обязательное поле');
-  } else if (!price.validity) {
-    price.setCustomValidity('');
   }
 });
 
