@@ -61,7 +61,6 @@ const checkRoomCapacity = () => {
   } else if (rooms !== 100 && guests === 0) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Должно быть хотя бы 1 место для размещения');
   }
-  return guestNumber.checkValidity();
 };
 
 formSubmitBtn.addEventListener('click', () => {
