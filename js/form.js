@@ -1,4 +1,3 @@
-const formSubmitBtn = document.querySelector('.ad-form__submit');
 const title = document.querySelector('#title');
 const address = document.querySelector('#address');
 const propertyType = document.querySelector('#type');
@@ -63,6 +62,12 @@ const checkRoomCapacity = () => {
   }
 };
 
-formSubmitBtn.addEventListener('click', () => {
+checkRoomCapacity();
+
+roomNumber.addEventListener('change', () => {
+  checkRoomCapacity();
+});
+
+guestNumber.addEventListener('change', () => {
   checkRoomCapacity();
 });
