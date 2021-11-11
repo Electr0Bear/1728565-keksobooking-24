@@ -56,16 +56,14 @@ propertyType.addEventListener('change', () => {
 const checkRoomCapacity = () => {
   const rooms = +roomNumber.value;
   const guests = +guestNumber.value;
+  guestNumber.setCustomValidity('');
   if (rooms === 100 && guests !== 0) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Данное помещение не подходит для размещения гостей');
   } else if (rooms < guests) {
     guestNumber.setCustomValidity(`Недопустимое количество гостей для выбранного количества комнат. Допускается гостей: не более ${roomNumber.value}`);
   } else if (rooms !== 100 && guests === 0) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Должно быть хотя бы 1 место для размещения');
-  } else {
-    guestNumber.setCustomValidity('');
   }
-
   return guestNumber.checkValidity();
 };
 
