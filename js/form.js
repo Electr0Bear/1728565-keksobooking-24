@@ -11,6 +11,7 @@ const PROPERTY_PRICES = {
 };
 const roomNumber = document.querySelector('#room_number');
 const guestNumber = document.querySelector('#capacity');
+const timeTable = document.querySelector('.ad-form__element--time');
 
 title.addEventListener('invalid', () => {
   title.setCustomValidity('');
@@ -70,4 +71,13 @@ roomNumber.addEventListener('change', () => {
 
 guestNumber.addEventListener('change', () => {
   checkRoomCapacity();
+});
+
+timeTable.addEventListener('change', (evt) => {
+  const timeSelectInputs = timeTable.querySelectorAll('select');
+  timeSelectInputs.forEach((element) => {
+    if (element.value !== evt.target.value) {
+      element.value = evt.target.value;
+    }
+  });
 });
