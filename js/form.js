@@ -12,6 +12,8 @@ const PropertyPrices = {
 const roomNumber = document.querySelector('#room_number');
 const guestNumber = document.querySelector('#capacity');
 const timeTable = document.querySelector('.ad-form__element--time');
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
 
 title.addEventListener('invalid', () => {
   title.setCustomValidity('');
@@ -39,9 +41,9 @@ price.addEventListener('input', () => {
 });
 
 price.addEventListener('invalid', () => {
-  if (price.validity.valueMissing) {
-    price.setCustomValidity('Обязательное поле');
-  }
+  price.validity.valueMissing ?
+    price.setCustomValidity('Обязательное поле')
+    : false;
 });
 
 propertyType.addEventListener('change', () => {
@@ -73,11 +75,16 @@ guestNumber.addEventListener('change', () => {
   checkRoomCapacity();
 });
 
-timeTable.addEventListener('change', (evt) => {
-  const timeSelectInputs = timeTable.querySelectorAll('select');
-  timeSelectInputs.forEach((element) => {
-    if (element.value !== evt.target.value) {
-      element.value = evt.target.value;
-    }
-  });
+const timeTableHandler = (currentInput, targetInput) => {
+  targetInput.value !== currentInput.value ?
+    targetInput.value = currentInput.value
+    : false;
+};
+
+timeIn.addEventListener('change', (evt) => {
+  timeTableHandler(evt.target, timeOut);
+});
+
+timeOut.addEventListener('change', (evt) => {
+  timeTableHandler(evt.target, timeIn);
 });
