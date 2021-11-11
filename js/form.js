@@ -11,7 +11,6 @@ const PropertyPrices = {
 };
 const roomNumber = document.querySelector('#room_number');
 const guestNumber = document.querySelector('#capacity');
-const timeTable = document.querySelector('.ad-form__element--time');
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 
