@@ -14,10 +14,7 @@ const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 
 title.addEventListener('input', () => {
-  title.setCustomValidity('');
-  if (title.validity.tooShort) {
-    title.setCustomValidity('Заголовок должен состоять минимум из 20 символов');
-  }
+  title.setCustomValidity(title.validity.tooShort ? 'Заголовок должен состоять минимум из 30 символов' : '');
 });
 
 price.addEventListener('input', () => {
