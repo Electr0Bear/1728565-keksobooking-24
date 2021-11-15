@@ -1,8 +1,12 @@
 // import {generatePost} from './advertisment.js';
-// import {getObject} from './data.js';
+// import {objects} from './data.js';
 import {setStatus} from './active-elements.js';
 import './form.js';
 import {map} from './map.js';
+
+setStatus(true);
+map.on('load', setStatus(false));
+// console.log(objects);
 
 // const generateObjects = (numOfObjects) => {
 //   const postsArr = [];
@@ -15,6 +19,3 @@ import {map} from './map.js';
 
 // const generatedObjects = generateObjects(10);
 // generatePost(generatedObjects[0]);
-
-setStatus(true);
-map.on('load', setStatus(false));

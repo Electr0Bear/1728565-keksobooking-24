@@ -1,3 +1,5 @@
+import {objects} from './data.js';
+
 const address = document.querySelector('#address');
 
 const map = L.map('map-canvas')
@@ -15,11 +17,11 @@ const mainPinIcon = L.icon({
   iconAnchor: [26, 52],
 });
 
-// const pinIcon = L.icon({
-//   iconUrl: '../img/pin.svg',
-//   iconSize: [52, 52],
-//   iconAnchor: [26, 52],
-// });
+const pinIcon = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
 
 const mainMarker = L.marker(
   {
@@ -31,6 +33,24 @@ const mainMarker = L.marker(
     icon: mainPinIcon,
   },
 );
+
+objects.forEach((element) => {
+  const {location} = element;
+  const marker = L.marker(
+    {
+      lat: location.lat,
+      lng: location.lng,
+    },
+    {
+      icon: pinIcon,
+    },
+  );
+
+  marker
+    .addTo(map)
+    .bindPopup(element.offer.title);
+});
+
 
 mainMarker.addTo(map);
 let {lat, lng} = mainMarker.getLatLng();

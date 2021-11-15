@@ -1,4 +1,8 @@
-import {getRndInteger, getRndFloat, getRndElements} from './util.js';
+import {
+  getRndInteger,
+  getRndFloat,
+  getRndElements
+} from './util.js';
 
 const TITLE_1 = ['Роскошн', 'Просторн', 'Доступн', 'Комфортабельн', 'Элегантн'];
 const TITLE_2 = ['дворец', 'квартира', 'дом', 'бунгало', 'номер в отеле'];
@@ -58,4 +62,15 @@ const getObject = (counter) => {
   };
 };
 
-export {getObject};
+const request = async () => {
+  const response = await fetch('https://24.javascript.pages.academy/keksobooking/data');
+  const adverts = await response.json();
+  return adverts;
+};
+
+const objects = await request();
+
+export {
+  getObject,
+  objects
+};
