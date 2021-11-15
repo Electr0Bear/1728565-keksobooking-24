@@ -11,17 +11,30 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: 
 //   .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
 //   .openPopup();
 
-const marker = L.marker(
+const mainPinIcon = L.icon({
+  iconUrl: '../img/main-pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
+});
+
+const pinIcon = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
+});
+
+const mainMarker = L.marker(
   {
     lat: 35.660644,
     lng: 139.782431,
   },
   {
     draggable: true,
+    icon: mainPinIcon,
   },
 );
 
-marker.addTo(map);
-marker.on('moveend', (evt) => {
+mainMarker.addTo(map);
+mainMarker.on('moveend', (evt) => {
   console.log(evt.target.getLatLng());
 });
