@@ -1,19 +1,20 @@
-import {generatePost} from './advertisment.js';
-import {getObject} from './data.js';
+// import {generatePost} from './advertisment.js';
+// import {getObject} from './data.js';
 import {setStatus} from './active-elements.js';
 import './form.js';
-import './map.js';
+import {map} from './map.js';
 
-const generateObjects = (numOfObjects) => {
-  const postsArr = [];
+// const generateObjects = (numOfObjects) => {
+//   const postsArr = [];
 
-  for (let count = 1; count <= numOfObjects; count++) {
-    postsArr.push(getObject(count));
-  }
-  return postsArr;
-};
+//   for (let count = 1; count <= numOfObjects; count++) {
+//     postsArr.push(getObject(count));
+//   }
+//   return postsArr;
+// };
 
 // const generatedObjects = generateObjects(10);
 // generatePost(generatedObjects[0]);
 
-setStatus(false);
+setStatus(true);
+map.on('load', setStatus(false));
