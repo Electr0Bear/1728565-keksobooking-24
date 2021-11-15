@@ -1,4 +1,5 @@
 import {objects} from './data.js';
+import {createBaloon} from './mapbaloon.js';
 
 const address = document.querySelector('#address');
 
@@ -48,7 +49,7 @@ objects.forEach((element) => {
 
   marker
     .addTo(map)
-    .bindPopup(element.offer.title);
+    .bindPopup(createBaloon(element));
 });
 
 
