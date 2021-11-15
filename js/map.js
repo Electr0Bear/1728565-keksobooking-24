@@ -1,3 +1,5 @@
+const address = document.querySelector('#address');
+
 const map = L.map('map-canvas')
   .setView({
     lat: 35.660644,
@@ -31,8 +33,14 @@ const mainMarker = L.marker(
 );
 
 mainMarker.addTo(map);
+let {lat, lng} = mainMarker.getLatLng();
+address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
 mainMarker.on('moveend', (evt) => {
-  console.log(evt.target.getLatLng());
+  const currentAddr = evt.target.getLatLng();
+  lat = currentAddr.lat;
+  lng = currentAddr.lng;
+  address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
 });
 
 export {map};
