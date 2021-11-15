@@ -42,12 +42,8 @@ const createBaloon = (object) => {
   } else {
     post.querySelector('.popup__photo').remove();
     photos.forEach((photo) => {
-      const img = document.createElement('img');
+      const img = template.querySelector('.popup__photo').cloneNode(true);
       img.src = photo;
-      img.classList.add('popup__photo');
-      img.width = 45;
-      img.height = 40;
-      img.alt = 'Фотография жилья';
       postPhotosSection.appendChild(img);
     });
   }
