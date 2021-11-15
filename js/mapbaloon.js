@@ -6,7 +6,6 @@ const typeOfEstate = {
   hotel: 'Отель',
 };
 
-// const map = document.querySelector('#map-canvas');
 const template = document.querySelector('#card').content.querySelector('.popup');
 
 const createBaloon = (object) => {
@@ -41,13 +40,16 @@ const createBaloon = (object) => {
   if (!photos) {
     post.querySelector('.popup__photos').remove();
   } else {
-    for (let iterator = 1; iterator < photos.length; iterator++) {
-      postPhotosSection.appendChild(post.querySelector('.popup__photo').cloneNode(true));
-    }
-    const postPhotosArray = post.querySelectorAll('.popup__photo');
-    for (let iterator = 0; iterator < postPhotosArray.length; iterator++) {
-      postPhotosArray[iterator].src = `${photos[iterator]}`;
-    }
+    post.querySelector('.popup__photo').remove();
+    photos.forEach((photo) => {
+      const img = document.createElement('img');
+      img.src = photo;
+      img.classList.add('popup__photo');
+      img.width = 45;
+      img.height = 40;
+      img.alt = 'Фотография жилья';
+      postPhotosSection.appendChild(img);
+    });
   }
 
   return post;

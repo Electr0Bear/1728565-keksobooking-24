@@ -4,15 +4,3 @@ import {map} from './map.js';
 
 setStatus(true);
 map.on('load', setStatus(false));
-
-// const generateObjects = (numOfObjects) => {
-//   const postsArr = [];
-
-//   for (let count = 1; count <= numOfObjects; count++) {
-//     postsArr.push(getObject(count));
-//   }
-//   return postsArr;
-// };
-
-// const generatedObjects = generateObjects(10);
-// generatePost(generatedObjects[0]);
