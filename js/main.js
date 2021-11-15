@@ -2,6 +2,7 @@ import {generatePost} from './advertisment.js';
 import {getObject} from './data.js';
 import {setStatus} from './active-elements.js';
 import './form.js';
+import './map.js';
 
 const generateObjects = (numOfObjects) => {
   const postsArr = [];
@@ -12,7 +13,7 @@ const generateObjects = (numOfObjects) => {
   return postsArr;
 };
 
-const generatedObjects = generateObjects(10);
-generatePost(generatedObjects[0]);
+// const generatedObjects = generateObjects(10);
+// generatePost(generatedObjects[0]);
 
 setStatus(false);
