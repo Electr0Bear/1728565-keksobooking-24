@@ -1,4 +1,4 @@
-import {createBaloon} from './mapbaloon.js';
+import {createBalloon} from './mapballoon.js';
 
 const address = document.querySelector('#address');
 
@@ -34,7 +34,7 @@ const mainMarker = L.marker(
   },
 );
 
-const putBaloons = (posts) => {
+const putBalloons = (posts) => {
   posts.forEach((element) => {
     const {location} = element;
     const marker = L.marker(
@@ -49,7 +49,7 @@ const putBaloons = (posts) => {
 
     marker
       .addTo(map)
-      .bindPopup(createBaloon(element));
+      .bindPopup(createBalloon(element));
   });
 };
 
@@ -64,7 +64,7 @@ mainMarker.on('moveend', (evt) => {
   address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
 });
 
-const putUserBaloon = (post) => {
+const putUserBalloon = (post) => {
   const currentAddr = mainMarker.getLatLng();
   const marker = L.marker(
     {
@@ -78,7 +78,7 @@ const putUserBaloon = (post) => {
 
   marker
     .addTo(map)
-    .bindPopup(createBaloon(post));
+    .bindPopup(createBalloon(post));
 };
 
-export {map, putBaloons, putUserBaloon};
+export {map, putBalloons, putUserBalloon};

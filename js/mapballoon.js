@@ -8,7 +8,7 @@ const typeOfEstate = {
 
 const template = document.querySelector('#card').content.querySelector('.popup');
 
-const createBaloon = (object) => {
+const createBalloon = (object) => {
   const {author, offer} = object;
   const post = template.cloneNode(true);
   post.querySelector('.popup__avatar').src = author.avatar;
@@ -52,5 +52,5 @@ const createBaloon = (object) => {
 };
 
 export {
-  createBaloon
+  createBalloon
 };

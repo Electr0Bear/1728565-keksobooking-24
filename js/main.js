@@ -1,13 +1,13 @@
 import {setStatus} from './active-elements.js';
 import {formOnSubmit} from './form.js';
-import {map, putBaloons} from './map.js';
+import {map, putBalloons} from './map.js';
 import {getData} from './api.js';
 
 setStatus(true);
 map.on('load', setStatus(false));
 
 getData((posts) => {
-  putBaloons(posts.slice(0, 10));
+  putBalloons(posts.slice(0, 10));
 });
 
 formOnSubmit();

@@ -1,5 +1,5 @@
 import {closePopup} from './util.js';
-import {putUserBaloon} from './map.js';
+import {putUserBalloon} from './map.js';
 
 const onError = (err) => {
   const errorPopup = `<div class="error">
@@ -82,7 +82,7 @@ const postData = (body) => {
     })
     .then((post) => {
       onGoodSubmit();
-      putUserBaloon(refactorData(post));
+      putUserBalloon(refactorData(post));
     })
     .catch((err) => {
       onFailedSubmit(err);
