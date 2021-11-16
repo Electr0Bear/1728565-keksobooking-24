@@ -71,10 +71,10 @@ timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
 });
 
-const formOnSubmit = () => {
+const formOnSubmit = (onSuccess, onError) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    postData(new FormData(form));
+    postData(onSuccess, onError, new FormData(form));
   });
 };
 
