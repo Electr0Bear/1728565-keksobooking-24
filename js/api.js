@@ -17,7 +17,7 @@ const getData = (onSuccess) => {
 };
 
 const postData = (body) => {
-  fetch('https://24.javascript.pages.academy/keksobookin',
+  fetch('https://24.javascript.pages.academy/keksobooking',
     {
       method: 'POST',
       body,
