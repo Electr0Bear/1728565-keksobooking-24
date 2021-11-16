@@ -1,13 +1,14 @@
 import {closePopup, resetForm} from './util.js';
 
 const onError = (err) => {
-  const errorPopup = `<div class="error">
+  const errorPopupElement = `<div class="error">
     <p style="color: #FFF">Не удалось загрузить данные с сервера.<br>Код ошибки: ${err}</p>
     <button type="button" class="error__button-onload" style="color: white; border: 4px solid #ff5635; background-color: #ff5635; border-radius: 8px;">OK</button>
     </div>`;
-  document.querySelector('body').insertAdjacentHTML('beforeend', errorPopup);
+  document.querySelector('body').insertAdjacentHTML('beforeend', errorPopupElement);
+  const errorPopup = document.querySelector('.error');
   document.querySelector('.error__button-onload').addEventListener('click', () =>
-    document.querySelector('.error').remove(),
+    errorPopup.remove(),
   );
   closePopup(errorPopup);
 };
