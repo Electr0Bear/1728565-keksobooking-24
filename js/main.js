@@ -1,6 +1,6 @@
 import {setStatus} from './active-elements.js';
 import {formOnSubmit} from './form.js';
-import {map, putBaloons, putUserBaloon} from './map.js';
+import {map, putBaloons} from './map.js';
 import {getData} from './api.js';
 
 setStatus(true);
@@ -11,6 +11,3 @@ getData((posts) => {
 });
 
 formOnSubmit();
-// formOnSubmit((post) => {
-//   putUserBaloon(post);
-// });

@@ -15,7 +15,6 @@ const guestNumber = document.querySelector('#capacity');
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 const form = document.querySelector('.ad-form');
-const submitBtn = document.querySelector('.ad-form__submit');
 
 title.addEventListener('input', () => {
   title.setCustomValidity(title.validity.tooShort ? 'Заголовок должен состоять минимум из 30 символов' : '');

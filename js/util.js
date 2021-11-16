@@ -1,27 +1,45 @@
-// Функция возвращающая случайное целое число в заданном диапазоне
-const getRndInteger = (min, max) => {
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
+import {putUserBaloon} from './map.js';
 
-  const result = Math.random() * (upper - lower + 1) + lower;
-
-  return Math.floor(result);
+const closePopup = (element) => {
+  element.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    element.remove();
+  });
+  element.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+      element.remove();
+    }
+  });
 };
 
-// Функция возвращающая случайное число в заданном диапазоне с указанием количества знаков после запятой
-const getRndFloat = (min, max, digits = 1) => {
-  const lower = Math.min(Math.abs(min), Math.abs(max));
-  const upper = Math.max(Math.abs(min), Math.abs(max));
-
-  const result = Math.random() * (upper - lower) + lower;
-
-  return result.toFixed(digits);
+const onError = (err) => {
+  const errorPopup = `<div class="error">
+    <p style="color: #FFF">Не удалось загрузить данные с сервера.<br>Код ошибки: ${err}</p>
+    <button type="button" class="error__button-onload" style="color: white; border: 4px solid #ff5635; background-color: #ff5635; border-radius: 8px;">OK</button>
+    </div>`;
+  document.querySelector('body').insertAdjacentHTML('beforeend', errorPopup);
+  document.querySelector('.error__button-onload').addEventListener('click', () =>
+    document.querySelector('.error').remove(),
+  );
+  closePopup(errorPopup);
 };
 
-// Функиця, возвращающая массив из случаного набора уникальных элементов от передаваемого массива
-const getRndElements = (array) => {
-  const rndArr = [...new Set(Array.from({length: getRndInteger(1, array.length)}, () => array[getRndInteger(0, array.length - 1)]))];
-  return rndArr;
+const onGoodSubmit = (post) => {
+  putUserBaloon(post);
+  document.querySelector('.ad-form__reset').click();
+  const successPopupTemplate = document.querySelector('#success').content.querySelector('.success');
+  const successPopup = successPopupTemplate.cloneNode(true);
+  document.querySelector('body').appendChild(successPopup);
+  closePopup(successPopup);
 };
 
-export {getRndInteger, getRndFloat, getRndElements};
+const onFailedSubmit = () => {
+  document.querySelector('.ad-form__reset').click();
+  const failurePopupTemplate = document.querySelector('#error').content.querySelector('.error');
+  const failurePopup = failurePopupTemplate.cloneNode(true);
+  document.querySelector('body').appendChild(failurePopup);
+  closePopup(failurePopup);
+};
+
+export {onError, onGoodSubmit, onFailedSubmit};

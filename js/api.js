@@ -1,13 +1,4 @@
-const onError = (err) => {
-  const errorPopup = `<div class="error">
-    <p style="color: #FFF">Не удалось загрузить данные с сервера.<br>Код ошибки: ${err}</p>
-    <button type="button" class="error__button-onload" style="color: white; border: 4px solid #ff5635; background-color: #ff5635; border-radius: 8px;">OK</button>
-    </div>`;
-  document.querySelector('body').insertAdjacentHTML('beforeend', errorPopup);
-  document.querySelector('.error__button-onload').addEventListener('click', () =>
-    document.querySelector('.error').remove(),
-  );
-};
+import {onError, onGoodSubmit, onFailedSubmit} from './util.js';
 
 const getData = (onSuccess) => {
   fetch('https://24.javascript.pages.academy/keksobooking/data')
@@ -26,8 +17,7 @@ const getData = (onSuccess) => {
 };
 
 const postData = (body) => {
-  console.log(body);
-  fetch('https://24.javascript.pages.academy/keksobooking/data',
+  fetch('https://24.javascript.pages.academy/keksobookin',
     {
       method: 'POST',
       body,
@@ -40,10 +30,10 @@ const postData = (body) => {
       throw new Error(response.status);
     })
     .then((post) => {
-      console.log(post);
+      onGoodSubmit(post);
     })
     .catch((err) => {
-      console.log(err);
+      onFailedSubmit(err);
     });
 };
 
