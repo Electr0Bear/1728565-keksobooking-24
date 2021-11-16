@@ -1,5 +1,4 @@
-import {closePopup} from './util.js';
-import {putUserBalloon} from './map.js';
+import {closePopup, resetForm} from './util.js';
 
 const onError = (err) => {
   const errorPopup = `<div class="error">
@@ -14,7 +13,7 @@ const onError = (err) => {
 };
 
 const onGoodSubmit = () => {
-  document.querySelector('.ad-form__reset').click();
+  resetForm();
   const successPopupTemplate = document.querySelector('#success').content.querySelector('.success');
   const successPopup = successPopupTemplate.cloneNode(true);
   document.querySelector('body').appendChild(successPopup);
@@ -22,33 +21,11 @@ const onGoodSubmit = () => {
 };
 
 const onFailedSubmit = () => {
-  document.querySelector('.ad-form__reset').click();
+  resetForm();
   const failurePopupTemplate = document.querySelector('#error').content.querySelector('.error');
   const failurePopup = failurePopupTemplate.cloneNode(true);
   document.querySelector('body').appendChild(failurePopup);
   closePopup(failurePopup);
-};
-
-const refactorData = (object) => {
-  const post = {
-    author: {
-      avatar: '',
-    },
-    offer: {
-      title: object.title,
-      address: object.address,
-      price: object.price,
-      type: object.type,
-      rooms: object.rooms,
-      guests: object.capacity,
-      checkin: object.timein,
-      checkout: object.timeout,
-      features: object.feature,
-      description: object.description,
-      photos: object.files,
-    },
-  };
-  return post;
 };
 
 const getData = (onSuccess) => {
@@ -80,9 +57,8 @@ const postData = (body) => {
       }
       throw new Error(response.status);
     })
-    .then((post) => {
+    .then(() => {
       onGoodSubmit();
-      putUserBalloon(refactorData(post));
     })
     .catch((err) => {
       onFailedSubmit(err);
