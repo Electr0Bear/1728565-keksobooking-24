@@ -13,8 +13,7 @@ const closePopup = (element) => {
 };
 
 const resetForm = () => {
-  const resetBtn = document.querySelector('.ad-form__reset');
-  resetBtn.click();
+  document.querySelector('.ad-form').reset();
 };
 
 export {closePopup, resetForm};
