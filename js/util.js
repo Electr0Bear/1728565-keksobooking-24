@@ -5,10 +5,11 @@ const closePopup = (element) => {
     evt.preventDefault();
     element.remove();
   });
-  element.addEventListener('keydown', (evt) => {
+  document.querySelector('body').addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
       evt.preventDefault();
       element.remove();
+      document.querySelector('body').removeEventListener('keydown', evt);
     }
   });
 };
