@@ -73,7 +73,7 @@ timeOut.addEventListener('change', (evt) => {
 });
 
 const formOnSubmit = () => {
-  submitBtn.addEventListener('submit', (evt) => {
+  form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     postData(new FormData(form));
   });

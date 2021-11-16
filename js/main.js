@@ -10,6 +10,7 @@ getData((posts) => {
   putBaloons(posts.slice(0, 10));
 });
 
+formOnSubmit();
 // formOnSubmit((post) => {
 //   putUserBaloon(post);
 // });
