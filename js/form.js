@@ -1,3 +1,5 @@
+import {postData} from './api.js';
+
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
@@ -12,6 +14,8 @@ const roomNumber = document.querySelector('#room_number');
 const guestNumber = document.querySelector('#capacity');
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
+const form = document.querySelector('.ad-form');
+const submitBtn = document.querySelector('.ad-form__submit');
 
 title.addEventListener('input', () => {
   title.setCustomValidity(title.validity.tooShort ? 'Заголовок должен состоять минимум из 30 символов' : '');
@@ -67,3 +71,12 @@ timeIn.addEventListener('change', (evt) => {
 timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
 });
+
+const formOnSubmit = () => {
+  submitBtn.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    postData(new FormData(form));
+  });
+};
+
+export {formOnSubmit};

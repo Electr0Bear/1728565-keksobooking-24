@@ -25,6 +25,29 @@ const getData = (onSuccess) => {
     });
 };
 
+const postData = (body) => {
+  console.log(body);
+  fetch('https://24.javascript.pages.academy/keksobooking/data',
+    {
+      method: 'POST',
+      body,
+    },
+  )
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.status);
+    })
+    .then((post) => {
+      console.log(post);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 export {
-  getData
+  getData,
+  postData
 };

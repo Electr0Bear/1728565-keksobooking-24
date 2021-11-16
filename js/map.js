@@ -64,4 +64,21 @@ mainMarker.on('moveend', (evt) => {
   address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
 });
 
-export {map, putBaloons};
+const putUserBaloon = (post) => {
+  const {location} = post;
+  const marker = L.marker(
+    {
+      lat: location.lat,
+      lng: location.lng,
+    },
+    {
+      icon: pinIcon,
+    },
+  );
+
+  marker
+    .addTo(map)
+    .bindPopup(createBaloon(post));
+};
+
+export {map, putBaloons, putUserBaloon};
