@@ -1,4 +1,4 @@
-import {createBaloon, createUserPostBaloon} from './mapbaloon.js';
+import {createBaloon} from './mapbaloon.js';
 
 const address = document.querySelector('#address');
 
@@ -78,7 +78,7 @@ const putUserBaloon = (post) => {
 
   marker
     .addTo(map)
-    .bindPopup(createUserPostBaloon(post));
+    .bindPopup(createBaloon(post));
 };
 
 export {map, putBaloons, putUserBaloon};

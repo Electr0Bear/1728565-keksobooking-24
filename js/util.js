@@ -12,5 +12,4 @@ const closePopup = (element) => {
   });
 };
 
-
 export {closePopup};

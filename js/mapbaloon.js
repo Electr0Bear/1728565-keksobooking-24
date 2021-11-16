@@ -51,49 +51,6 @@ const createBaloon = (object) => {
   return post;
 };
 
-const createUserPostBaloon = (object) => {
-  const post = template.cloneNode(true);
-  // post.querySelector('.popup__avatar').src = object.avatar;
-  post.querySelector('.popup__title').textContent = object.title;
-  post.querySelector('.popup__text--address').textContent = object.address;
-  post.querySelector('.popup__text--price').textContent = `${object.price} ₽/ночь`;
-  post.querySelector('.popup__type').textContent = typeOfEstate[object.type];
-  post.querySelector('.popup__text--capacity').textContent = `${object.rooms} комнат для ${object.capacity} гостей`;
-  post.querySelector('.popup__text--time').textContent = `Заезд после ${object.timein}, выезд до ${object.timeout}`;
-
-  const features = object.feature;
-  const featureList = post.querySelectorAll('.popup__feature');
-  if (!features) {
-    post.querySelector('.popup__features').remove();
-  } else {
-    featureList.forEach((featureItem) => {
-      const activeFeatureItem = features.some((feature) =>
-        featureItem.classList.contains(`popup__feature--${feature}`));
-      if (!activeFeatureItem) {
-        featureItem.remove();
-      }
-    });
-  }
-
-  post.querySelector('.popup__description').textContent = object.description;
-
-  const postPhotosSection = post.querySelector('.popup__photos');
-  const photos = object.files;
-  if (!photos) {
-    post.querySelector('.popup__photos').remove();
-  } else {
-    post.querySelector('.popup__photo').remove();
-    photos.forEach((photo) => {
-      const img = template.querySelector('.popup__photo').cloneNode(true);
-      img.src = photo;
-      postPhotosSection.appendChild(img);
-    });
-  }
-
-  return post;
-};
-
 export {
-  createBaloon,
-  createUserPostBaloon
+  createBaloon
 };

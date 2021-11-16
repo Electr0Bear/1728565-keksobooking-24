@@ -13,8 +13,7 @@ const onError = (err) => {
   closePopup(errorPopup);
 };
 
-const onGoodSubmit = (post) => {
-  putUserBaloon(post);
+const onGoodSubmit = () => {
   document.querySelector('.ad-form__reset').click();
   const successPopupTemplate = document.querySelector('#success').content.querySelector('.success');
   const successPopup = successPopupTemplate.cloneNode(true);
@@ -28,6 +27,28 @@ const onFailedSubmit = () => {
   const failurePopup = failurePopupTemplate.cloneNode(true);
   document.querySelector('body').appendChild(failurePopup);
   closePopup(failurePopup);
+};
+
+const refactorData = (object) => {
+  const post = {
+    author: {
+      avatar: '',
+    },
+    offer: {
+      title: object.title,
+      address: object.address,
+      price: object.price,
+      type: object.type,
+      rooms: object.rooms,
+      guests: object.capacity,
+      checkin: object.timein,
+      checkout: object.timeout,
+      features: object.feature,
+      description: object.description,
+      photos: object.files,
+    },
+  };
+  return post;
 };
 
 const getData = (onSuccess) => {
@@ -60,7 +81,8 @@ const postData = (body) => {
       throw new Error(response.status);
     })
     .then((post) => {
-      onGoodSubmit(post);
+      onGoodSubmit();
+      putUserBaloon(refactorData(post));
     })
     .catch((err) => {
       onFailedSubmit(err);
