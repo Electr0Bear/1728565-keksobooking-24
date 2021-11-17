@@ -81,4 +81,4 @@ const resetMainMarker = () => {
   address.value = `${mainMarker.getLatLng().lat.toFixed(5)}, ${mainMarker.getLatLng().lng.toFixed(5)}`;
 };
 
-export {map, putBalloons, resetMainMarker};
+export {map, markerLayer, putBalloons, resetMainMarker};

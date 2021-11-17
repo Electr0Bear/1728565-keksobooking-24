@@ -1,3 +1,5 @@
+import {markerLayer} from './map.js';
+
 const filterType = document.querySelector('#housing-type');
 const filterPrice = document.querySelector('#housing-price');
 const filterRooms = document.querySelector('#housing-rooms');
@@ -15,42 +17,32 @@ const filterValues = {
 const onClickFilter = (cb) => {
   filterType.addEventListener('change', (evt) => {
     filterValues.type = evt.target.value;
-    if (document.querySelector('.leaflet-popup')) {
-      document.querySelector('.leaflet-popup').remove();
-    }
+    markerLayer.closePopup();
     cb();
   });
 
   filterPrice.addEventListener('change', (evt) => {
     filterValues.price = evt.target.value;
-    if (document.querySelector('.leaflet-popup')) {
-      document.querySelector('.leaflet-popup').remove();
-    }
+    markerLayer.closePopup();
     cb();
   });
 
   filterRooms.addEventListener('change', (evt) => {
     filterValues.rooms = evt.target.value;
-    if (document.querySelector('.leaflet-popup')) {
-      document.querySelector('.leaflet-popup').remove();
-    }
+    markerLayer.closePopup();
     cb();
   });
 
   filterGuests.addEventListener('change', (evt) => {
     filterValues.guests = evt.target.value;
-    if (document.querySelector('.leaflet-popup')) {
-      document.querySelector('.leaflet-popup').remove();
-    }
+    markerLayer.closePopup();
     cb();
   });
 
   filterFeatureSection.addEventListener('change', () => {
     const filterFeatureCheckboxesChecked = filterFeatureSection.querySelectorAll('.map__checkbox:checked');
     filterValues.features = Array.from(filterFeatureCheckboxesChecked).map((checkbox) => checkbox.value);
-    if (document.querySelector('.leaflet-popup')) {
-      document.querySelector('.leaflet-popup').remove();
-    }
+    markerLayer.closePopup();
     cb();
   });
 };
