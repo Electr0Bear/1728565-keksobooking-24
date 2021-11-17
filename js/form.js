@@ -73,10 +73,12 @@ timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
 });
 
+
 formResetBtn.addEventListener('click', (evt) => {
   evt.preventDefault();
   resetForm();
 });
+
 
 const formOnSubmit = (onSuccess, onError) => {
   form.addEventListener('submit', (evt) => {
