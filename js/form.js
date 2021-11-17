@@ -1,4 +1,5 @@
 import {postData} from './api.js';
+import {resetForm} from './util.js';
 
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
@@ -15,6 +16,7 @@ const guestNumber = document.querySelector('#capacity');
 const timeIn = document.querySelector('#timein');
 const timeOut = document.querySelector('#timeout');
 const form = document.querySelector('.ad-form');
+const formResetBtn = document.querySelector('.ad-form__reset');
 
 title.addEventListener('input', () => {
   title.setCustomValidity(title.validity.tooShort ? 'Заголовок должен состоять минимум из 30 символов' : '');
@@ -69,6 +71,11 @@ timeIn.addEventListener('change', (evt) => {
 
 timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
+});
+
+formResetBtn.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  resetForm();
 });
 
 const formOnSubmit = (onSuccess, onError) => {
