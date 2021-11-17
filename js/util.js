@@ -1,3 +1,5 @@
+import {resetMainMarker} from './map.js';
+
 const form = document.querySelector('.ad-form');
 
 const closePopup = (element) => {
@@ -16,6 +18,7 @@ const closePopup = (element) => {
 
 const resetForm = () => {
   form.reset();
+  resetMainMarker();
 };
 
 export {closePopup, resetForm};

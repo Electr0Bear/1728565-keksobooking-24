@@ -23,16 +23,31 @@ const pinIcon = L.icon({
   iconAnchor: [20, 40],
 });
 
-const mainMarker = L.marker(
-  {
-    lat: 35.660644,
-    lng: 139.782431,
-  },
-  {
-    draggable: true,
-    icon: mainPinIcon,
-  },
-);
+const createMainMarker = () => {
+  const mainMarker = L.marker(
+    {
+      lat: 35.660644,
+      lng: 139.782431,
+    },
+    {
+      draggable: true,
+      icon: mainPinIcon,
+    },
+  );
+
+  mainMarker.addTo(map);
+
+  let {lat, lng} = mainMarker.getLatLng();
+  address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
+  mainMarker.on('moveend', (evt) => {
+    const currentAddr = evt.target.getLatLng();
+    lat = currentAddr.lat;
+    lng = currentAddr.lng;
+    address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+  });
+};
+
 
 const putBalloons = (posts) => {
   posts.forEach((element) => {
@@ -53,15 +68,12 @@ const putBalloons = (posts) => {
   });
 };
 
-mainMarker.addTo(map);
-let {lat, lng} = mainMarker.getLatLng();
-address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+createMainMarker();
 
-mainMarker.on('moveend', (evt) => {
-  const currentAddr = evt.target.getLatLng();
-  lat = currentAddr.lat;
-  lng = currentAddr.lng;
-  address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
-});
+const resetMainMarker = () => {
+  const mainMarker = document.querySelector('.leaflet-marker-draggable');
+  mainMarker.remove();
+  createMainMarker();
+};
 
-export {map, putBalloons};
+export {map, putBalloons, resetMainMarker};
