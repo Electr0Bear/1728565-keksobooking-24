@@ -12,6 +12,8 @@ const map = L.map('map-canvas')
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})
   .addTo(map);
 
+const markerLayer = L.layerGroup().addTo(map);
+
 const mainPinIcon = L.icon({
   iconUrl: '../img/main-pin.svg',
   iconSize: [52, 52],
@@ -24,35 +26,31 @@ const pinIcon = L.icon({
   iconAnchor: [20, 40],
 });
 
-const createMainMarker = () => {
-  const mainMarker = L.marker(
-    {
-      lat: 35.660644,
-      lng: 139.782431,
-    },
-    {
-      draggable: true,
-      icon: mainPinIcon,
-    },
-  );
+const mainMarker = L.marker(
+  {
+    lat: 35.660644,
+    lng: 139.782431,
+  },
+  {
+    draggable: true,
+    icon: mainPinIcon,
+  },
+);
 
-  mainMarker.addTo(map);
+mainMarker.addTo(map);
 
-  let {lat, lng} = mainMarker.getLatLng();
+let {lat, lng} = mainMarker.getLatLng();
+address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
+mainMarker.on('moveend', (evt) => {
+  const currentAddr = evt.target.getLatLng();
+  lat = currentAddr.lat;
+  lng = currentAddr.lng;
   address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
-
-  mainMarker.on('moveend', (evt) => {
-    const currentAddr = evt.target.getLatLng();
-    lat = currentAddr.lat;
-    lng = currentAddr.lng;
-    address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
-  });
-};
-
+});
 
 const putBalloons = (posts) => {
-  const markers = document.querySelectorAll('.leaflet-interactive:not(.leaflet-marker-draggable)');
-  markers.forEach((marker) => marker.remove());
+  markerLayer.clearLayers();
   posts
     .slice()
     .sort(comparePosts)
@@ -70,17 +68,17 @@ const putBalloons = (posts) => {
       );
 
       marker
-        .addTo(map)
+        .addTo(markerLayer)
         .bindPopup(createBalloon(element));
     });
 };
 
-createMainMarker();
-
 const resetMainMarker = () => {
-  const mainMarker = document.querySelector('.leaflet-marker-draggable');
-  mainMarker.remove();
-  createMainMarker();
+  mainMarker.setLatLng({
+    lat: 35.660644,
+    lng: 139.782431,
+  });
+  address.value = `${mainMarker.getLatLng().lat.toFixed(5)}, ${mainMarker.getLatLng().lng.toFixed(5)}`;
 };
 
 export {map, putBalloons, resetMainMarker};
