@@ -13,27 +13,42 @@ let filterFeatures = [];
 const onFilterClick = (cb) => {
   filterType.addEventListener('change', (evt) => {
     type = evt.target.value;
+    if (document.querySelector('.leaflet-popup')) {
+      document.querySelector('.leaflet-popup').remove();
+    }
     cb();
   });
 
   filterPrice.addEventListener('change', (evt) => {
     price = evt.target.value;
+    if (document.querySelector('.leaflet-popup')) {
+      document.querySelector('.leaflet-popup').remove();
+    }
     cb();
   });
 
   filterRooms.addEventListener('change', (evt) => {
     rooms = evt.target.value;
+    if (document.querySelector('.leaflet-popup')) {
+      document.querySelector('.leaflet-popup').remove();
+    }
     cb();
   });
 
   filterGuests.addEventListener('change', (evt) => {
     guests = evt.target.value;
+    if (document.querySelector('.leaflet-popup')) {
+      document.querySelector('.leaflet-popup').remove();
+    }
     cb();
   });
 
   filterFeatureSection.addEventListener('change', () => {
     const filterFeatureCheckboxesChecked = filterFeatureSection.querySelectorAll('.map__checkbox:checked');
     filterFeatures = Array.from(filterFeatureCheckboxesChecked).map((checkbox) => checkbox.value);
+    if (document.querySelector('.leaflet-popup')) {
+      document.querySelector('.leaflet-popup').remove();
+    }
     cb();
   });
 };
