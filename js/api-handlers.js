@@ -13,7 +13,7 @@ const onError = (err) => {
   closePopup(errorPopup);
 };
 
-const onGoodSubmit = () => {
+const onSuccessSubmit = () => {
   resetForm();
   const successPopupTemplate = document.querySelector('#success').content.querySelector('.success');
   const successPopup = successPopupTemplate.cloneNode(true);
@@ -29,4 +29,4 @@ const onFailedSubmit = () => {
   closePopup(failurePopup);
 };
 
-export {onError, onGoodSubmit, onFailedSubmit};
+export {onError, onSuccessSubmit, onFailedSubmit};

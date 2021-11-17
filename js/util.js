@@ -1,3 +1,5 @@
+const form = document.querySelector('.ad-form');
+
 const closePopup = (element) => {
   element.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -13,7 +15,7 @@ const closePopup = (element) => {
 };
 
 const resetForm = () => {
-  document.querySelector('.ad-form').reset();
+  form.reset();
 };
 
 export {closePopup, resetForm};
