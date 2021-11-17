@@ -21,7 +21,7 @@ const debounce = (cb, delay) => {
 getData((posts) => {
   putBalloons(posts);
   onClickFilter(debounce(() => putBalloons(posts), DELAY));
-  onClickResetBtn(() => onClickFilter(() => putBalloons(posts)));
+  onClickResetBtn(() => putBalloons(posts));
 }, onError);
 
 onSubmitForm(onSuccessSubmit, onFailedSubmit);
