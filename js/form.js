@@ -1,5 +1,6 @@
 import {postData} from './api.js';
 import {resetForm} from './util.js';
+import {filterValues} from './filter.js';
 
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
@@ -77,6 +78,11 @@ const onClickResetBtn = (cb) => {
   formResetBtn.addEventListener('click', (evt) => {
     evt.preventDefault();
     resetForm();
+    filterValues.type = '';
+    filterValues.price = '';
+    filterValues.rooms = '';
+    filterValues.guests = '';
+    filterValues.features = [];
     cb();
   });
 };

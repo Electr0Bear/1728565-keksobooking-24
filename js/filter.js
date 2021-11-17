@@ -4,15 +4,17 @@ const filterRooms = document.querySelector('#housing-rooms');
 const filterGuests = document.querySelector('#housing-guests');
 const filterFeatureSection = document.querySelector('.map__features');
 
-let type = '';
-let price = '';
-let rooms = '';
-let guests = '';
-let filterFeatures = [];
+const filterValues = {
+  type: '',
+  price: '',
+  rooms: '',
+  guests: '',
+  features: [],
+};
 
 const onClickFilter = (cb) => {
   filterType.addEventListener('change', (evt) => {
-    type = evt.target.value;
+    filterValues.type = evt.target.value;
     if (document.querySelector('.leaflet-popup')) {
       document.querySelector('.leaflet-popup').remove();
     }
@@ -20,7 +22,7 @@ const onClickFilter = (cb) => {
   });
 
   filterPrice.addEventListener('change', (evt) => {
-    price = evt.target.value;
+    filterValues.price = evt.target.value;
     if (document.querySelector('.leaflet-popup')) {
       document.querySelector('.leaflet-popup').remove();
     }
@@ -28,7 +30,7 @@ const onClickFilter = (cb) => {
   });
 
   filterRooms.addEventListener('change', (evt) => {
-    rooms = evt.target.value;
+    filterValues.rooms = evt.target.value;
     if (document.querySelector('.leaflet-popup')) {
       document.querySelector('.leaflet-popup').remove();
     }
@@ -36,7 +38,7 @@ const onClickFilter = (cb) => {
   });
 
   filterGuests.addEventListener('change', (evt) => {
-    guests = evt.target.value;
+    filterValues.guests = evt.target.value;
     if (document.querySelector('.leaflet-popup')) {
       document.querySelector('.leaflet-popup').remove();
     }
@@ -45,7 +47,7 @@ const onClickFilter = (cb) => {
 
   filterFeatureSection.addEventListener('change', () => {
     const filterFeatureCheckboxesChecked = filterFeatureSection.querySelectorAll('.map__checkbox:checked');
-    filterFeatures = Array.from(filterFeatureCheckboxesChecked).map((checkbox) => checkbox.value);
+    filterValues.features = Array.from(filterFeatureCheckboxesChecked).map((checkbox) => checkbox.value);
     if (document.querySelector('.leaflet-popup')) {
       document.querySelector('.leaflet-popup').remove();
     }
@@ -57,11 +59,11 @@ const getPostRank = (post) => {
   let rank = 0;
   const {offer} = post;
 
-  if (offer.type === type) {
+  if (offer.type === filterValues.type) {
     rank += 1;
   }
 
-  switch (price) {
+  switch (filterValues.price) {
     case 'low':
       if (offer.price < 10000) {
         rank += 1;
@@ -79,16 +81,16 @@ const getPostRank = (post) => {
       break;
   }
 
-  if (offer.rooms === +rooms) {
+  if (offer.rooms === +filterValues.rooms) {
     rank += 1;
   }
 
-  if (offer.guests === +guests) {
+  if (offer.guests === +filterValues.guests) {
     rank += 1;
   }
 
   if (offer.features) {
-    filterFeatures.forEach((filterFeature) => {
+    filterValues.features.forEach((filterFeature) => {
       const featureItem = offer.features.some((offerFeature) => filterFeature === offerFeature);
       if (featureItem) {
         rank += 1;
@@ -106,4 +108,4 @@ const comparePosts = (postA, postB) => {
   return rankB - rankA;
 };
 
-export {comparePosts, onClickFilter};
+export {comparePosts, onClickFilter, filterValues};
