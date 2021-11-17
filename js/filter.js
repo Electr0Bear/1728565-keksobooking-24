@@ -8,7 +8,7 @@ let type = '';
 let price = '';
 let rooms = '';
 let guests = '';
-let features = [];
+let filterFeatures = [];
 
 const onFilterClick = (cb) => {
   filterType.addEventListener('change', (evt) => {
@@ -33,7 +33,8 @@ const onFilterClick = (cb) => {
 
   filterFeatureSection.addEventListener('change', () => {
     const filterFeatureCheckboxesChecked = filterFeatureSection.querySelectorAll('.map__checkbox:checked');
-    features = Array.from(filterFeatureCheckboxesChecked).map((checkbox) => checkbox.value);
+    filterFeatures = Array.from(filterFeatureCheckboxesChecked).map((checkbox) => checkbox.value);
+    cb();
   });
 };
 
@@ -45,12 +46,39 @@ const getPostRank = (post) => {
     rank += 1;
   }
 
+  switch (price) {
+    case 'low':
+      if (offer.price < 10000) {
+        rank += 1;
+      }
+      break;
+    case 'middle':
+      if (offer.price >= 10000 && offer.price <= 50000) {
+        rank += 1;
+      }
+      break;
+    case 'high':
+      if (offer.price >= 50000) {
+        rank += 1;
+      }
+      break;
+  }
+
   if (offer.rooms === +rooms) {
     rank += 1;
   }
 
   if (offer.guests === +guests) {
     rank += 1;
+  }
+
+  if (offer.features) {
+    filterFeatures.forEach((filterFeature) => {
+      const featureItem = offer.features.some((offerFeature) => filterFeature === offerFeature);
+      if (featureItem) {
+        rank += 1;
+      }
+    });
   }
 
   return rank;
