@@ -10,7 +10,7 @@ let rooms = '';
 let guests = '';
 let filterFeatures = [];
 
-const onFilterClick = (cb) => {
+const onClickFilter = (cb) => {
   filterType.addEventListener('change', (evt) => {
     type = evt.target.value;
     if (document.querySelector('.leaflet-popup')) {
@@ -106,4 +106,4 @@ const comparePosts = (postA, postB) => {
   return rankB - rankA;
 };
 
-export {comparePosts, onFilterClick};
+export {comparePosts, onClickFilter};

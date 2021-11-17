@@ -1,9 +1,9 @@
 import {setStatus} from './active-elements.js';
-import {formOnSubmit} from './form.js';
+import {onSubmitForm, onClickResetBtn} from './form.js';
 import {map, putBalloons} from './map.js';
 import {getData} from './api.js';
 import {onError, onSuccessSubmit, onFailedSubmit} from './api-handlers.js';
-import {onFilterClick} from './filter.js';
+import {onClickFilter} from './filter.js';
 
 setStatus(true);
 map.on('load', setStatus(false));
@@ -20,7 +20,8 @@ const debounce = (cb, delay) => {
 
 getData((posts) => {
   putBalloons(posts);
-  onFilterClick(debounce(() => putBalloons(posts), DELAY));
+  onClickFilter(debounce(() => putBalloons(posts), DELAY));
+  onClickResetBtn(() => onClickFilter(() => putBalloons(posts)));
 }, onError);
 
-formOnSubmit(onSuccessSubmit, onFailedSubmit);
+onSubmitForm(onSuccessSubmit, onFailedSubmit);

@@ -73,18 +73,24 @@ timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
 });
 
+const onClickResetBtn = (cb) => {
+  formResetBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    resetForm();
+    cb();
+  });
+};
 
 formResetBtn.addEventListener('click', (evt) => {
   evt.preventDefault();
   resetForm();
 });
 
-
-const formOnSubmit = (onSuccess, onError) => {
+const onSubmitForm = (onSuccess, onError) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     postData(onSuccess, onError, new FormData(form));
   });
 };
 
-export {formOnSubmit};
+export {onSubmitForm, onClickResetBtn};
