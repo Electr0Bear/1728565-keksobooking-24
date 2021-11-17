@@ -1,4 +1,5 @@
 import {createBalloon} from './mapballoon.js';
+import {comparePosts} from './filter.js';
 
 const address = document.querySelector('#address');
 
@@ -50,22 +51,28 @@ const createMainMarker = () => {
 
 
 const putBalloons = (posts) => {
-  posts.forEach((element) => {
-    const {location} = element;
-    const marker = L.marker(
-      {
-        lat: location.lat,
-        lng: location.lng,
-      },
-      {
-        icon: pinIcon,
-      },
-    );
+  const markers = document.querySelectorAll('.leaflet-interactive:not(.leaflet-marker-draggable)');
+  markers.forEach((marker) => marker.remove());
+  posts
+    .slice()
+    .sort(comparePosts)
+    .slice(0, 10)
+    .forEach((element) => {
+      const {location} = element;
+      const marker = L.marker(
+        {
+          lat: location.lat,
+          lng: location.lng,
+        },
+        {
+          icon: pinIcon,
+        },
+      );
 
-    marker
-      .addTo(map)
-      .bindPopup(createBalloon(element));
-  });
+      marker
+        .addTo(map)
+        .bindPopup(createBalloon(element));
+    });
 };
 
 createMainMarker();
