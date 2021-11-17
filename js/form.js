@@ -34,6 +34,7 @@ price.addEventListener('input', () => {
 });
 
 propertyType.addEventListener('change', () => {
+  price.setCustomValidity('');
   const currentType = propertyType.value;
   price.min = PropertyPrices[currentType];
   price.placeholder = PropertyPrices[currentType];
