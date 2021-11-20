@@ -4,7 +4,11 @@ import {filterPosts} from './filter.js';
 const MAP_DEFAULT_LAT = 35.660644;
 const MAP_DEFAULT_LNG = 139.782431;
 const MAIN_PIN_ICON = '../img/main-pin.svg';
+const MAIN_PIN_SIZE = [52, 52];
+const MAIN_PIN_ANCHOR = [26, 52];
 const PIN_ICON = '../img/pin.svg';
+const PIN_SIZE = [40, 40];
+const PIN_ANCHOR = [20, 40];
 const address = document.querySelector('#address');
 
 const map = L.map('map-canvas')
@@ -20,14 +24,14 @@ const markerLayer = L.layerGroup().addTo(map);
 
 const mainPinIcon = L.icon({
   iconUrl: MAIN_PIN_ICON,
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
+  iconSize: MAIN_PIN_SIZE,
+  iconAnchor: MAIN_PIN_ANCHOR,
 });
 
 const pinIcon = L.icon({
   iconUrl: PIN_ICON,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconSize: PIN_SIZE,
+  iconAnchor: PIN_ANCHOR,
 });
 
 const mainMarker = L.marker(

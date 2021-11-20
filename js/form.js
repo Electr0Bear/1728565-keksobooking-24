@@ -3,6 +3,7 @@ import {resetForm} from './util.js';
 
 
 const MAX_ROOMS = 100;
+const MIN_GUESTS = 0;
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
@@ -45,11 +46,11 @@ const checkRoomCapacity = () => {
   const rooms = +roomNumber.value;
   const guests = +guestNumber.value;
   guestNumber.setCustomValidity('');
-  if (rooms === MAX_ROOMS && guests !== 0) {
+  if (rooms === MAX_ROOMS && guests !== MIN_GUESTS) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Данное помещение не подходит для размещения гостей');
   } else if (rooms < guests) {
     guestNumber.setCustomValidity(`Недопустимое количество гостей для выбранного количества комнат. Допускается гостей: не более ${roomNumber.value}`);
-  } else if (rooms !== MAX_ROOMS && guests === 0) {
+  } else if (rooms !== MAX_ROOMS && guests === MIN_GUESTS) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Должно быть хотя бы 1 место для размещения');
   }
 };
