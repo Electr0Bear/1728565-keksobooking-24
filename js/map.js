@@ -9,6 +9,8 @@ const MAIN_PIN_ANCHOR = [26, 52];
 const PIN_ICON = '../img/pin.svg';
 const PIN_SIZE = [40, 40];
 const PIN_ANCHOR = [20, 40];
+const MAX_POSTS = 10;
+const LOCATION_FLOATING_POINT = 5;
 const address = document.querySelector('#address');
 
 const map = L.map('map-canvas')
@@ -48,18 +50,18 @@ const mainMarker = L.marker(
 mainMarker.addTo(map);
 
 let {lat, lng} = mainMarker.getLatLng();
-address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+address.value = `${lat.toFixed(LOCATION_FLOATING_POINT)}, ${lng.toFixed(LOCATION_FLOATING_POINT)}`;
 
 mainMarker.on('moveend', (evt) => {
   const currentAddr = evt.target.getLatLng();
   lat = currentAddr.lat;
   lng = currentAddr.lng;
-  address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+  address.value = `${lat.toFixed(LOCATION_FLOATING_POINT)}, ${lng.toFixed(LOCATION_FLOATING_POINT)}`;
 });
 
 const putBalloons = (posts) => {
   markerLayer.clearLayers();
-  const filteredPosts = filterPosts(posts).slice(0, 10);
+  const filteredPosts = filterPosts(posts).slice(0, MAX_POSTS);
   filteredPosts.forEach((element) => {
     const {location} = element;
     const marker = L.marker(
@@ -83,7 +85,7 @@ const resetMainMarker = () => {
     lat: MAP_DEFAULT_LAT,
     lng: MAP_DEFAULT_LNG,
   });
-  address.value = `${MAP_DEFAULT_LAT.toFixed(5)}, ${MAP_DEFAULT_LNG.toFixed(5)}`;
+  address.value = `${MAP_DEFAULT_LAT.toFixed(LOCATION_FLOATING_POINT)}, ${MAP_DEFAULT_LNG.toFixed(LOCATION_FLOATING_POINT)}`;
 };
 
 export {map, markerLayer, putBalloons, resetMainMarker};
