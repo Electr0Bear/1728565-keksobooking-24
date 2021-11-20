@@ -1,5 +1,5 @@
 import {createBalloon} from './mapballoon.js';
-import {comparePosts} from './filter.js';
+// import {comparePosts} from './filter.js';
 
 const address = document.querySelector('#address');
 
@@ -52,8 +52,6 @@ mainMarker.on('moveend', (evt) => {
 const putBalloons = (posts) => {
   markerLayer.clearLayers();
   posts
-    .slice()
-    .sort(comparePosts)
     .slice(0, 10)
     .forEach((element) => {
       const {location} = element;
