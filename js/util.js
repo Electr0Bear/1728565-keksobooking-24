@@ -1,4 +1,5 @@
 import {resetMainMarker} from './map.js';
+import {markerLayer} from './map.js';
 
 const form = document.querySelector('.ad-form');
 const filters = document.querySelector('.map__filters');
@@ -20,10 +21,7 @@ const closePopup = (element) => {
 const resetForm = () => {
   form.reset();
   filters.reset();
-  const leafletBalloon = document.querySelector('.leaflet-popup');
-  if (leafletBalloon) {
-    leafletBalloon.remove();
-  }
+  markerLayer.closePopup();
   resetMainMarker();
 };
 

@@ -75,19 +75,6 @@ timeOut.addEventListener('change', (evt) => {
   timeTableHandler(evt.target, timeIn);
 });
 
-const onClickResetBtn = (cb) => {
-  formResetBtn.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    resetForm();
-    // filterValues.type = '';
-    // filterValues.price = '';
-    // filterValues.rooms = '';
-    // filterValues.guests = '';
-    // filterValues.features = [];
-    cb();
-  });
-};
-
 formResetBtn.addEventListener('click', (evt) => {
   evt.preventDefault();
   resetForm();
@@ -100,4 +87,4 @@ const onSubmitForm = (onSuccess, onError) => {
   });
 };
 
-export {onSubmitForm, onClickResetBtn};
+export {onSubmitForm};
