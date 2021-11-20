@@ -34,7 +34,7 @@ const filterFeatures = ({offer}) => {
   if (!offer.features && selectedFeatures.length > 0) {
     return false;
   }
-  return selectedFeatures.every((feature) => offer.featues.includes(feature.value));
+  return selectedFeatures.every((feature) => offer.features.includes(feature.value));
 };
 
 const filterPosts = (posts) => posts.filter((post) => filterType(post) && filterRooms(post) && filterPrice(post) && filterGuests(post) && filterFeatures(post));
