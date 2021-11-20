@@ -1,4 +1,4 @@
-const typeOfEstate = {
+const EstateTypes = {
   palace: 'Дворец',
   flat: 'Квартира',
   house: 'Дом',
@@ -15,7 +15,7 @@ const createBalloon = (object) => {
   post.querySelector('.popup__title').textContent = offer.title;
   post.querySelector('.popup__text--address').textContent = offer.address;
   post.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
-  post.querySelector('.popup__type').textContent = typeOfEstate[offer.type];
+  post.querySelector('.popup__type').textContent = EstateTypes[offer.type];
   post.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнат для ${offer.guests} гостей`;
   post.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
 

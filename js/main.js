@@ -5,10 +5,10 @@ import {getData} from './api.js';
 import {onError, onSuccessSubmit, onFailedSubmit} from './api-handlers.js';
 import {onClickFilter} from './filter.js';
 
+const DELAY = 500;
+
 setStatus(true);
 map.on('load', setStatus(false));
-
-const DELAY = 500;
 
 const debounce = (cb, delay) => {
   let timeout;

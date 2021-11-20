@@ -1,7 +1,8 @@
 import {postData} from './api.js';
 import {resetForm} from './util.js';
-// import {filterValues} from './filter.js';
 
+
+const MAX_ROOMS = 100;
 const title = document.querySelector('#title');
 const propertyType = document.querySelector('#type');
 const price = document.querySelector('#price');
@@ -44,11 +45,11 @@ const checkRoomCapacity = () => {
   const rooms = +roomNumber.value;
   const guests = +guestNumber.value;
   guestNumber.setCustomValidity('');
-  if (rooms === 100 && guests !== 0) {
+  if (rooms === MAX_ROOMS && guests !== 0) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Данное помещение не подходит для размещения гостей');
   } else if (rooms < guests) {
     guestNumber.setCustomValidity(`Недопустимое количество гостей для выбранного количества комнат. Допускается гостей: не более ${roomNumber.value}`);
-  } else if (rooms !== 100 && guests === 0) {
+  } else if (rooms !== MAX_ROOMS && guests === 0) {
     guestNumber.setCustomValidity('Недопустимое количество гостей для выбранного количества комнат. Должно быть хотя бы 1 место для размещения');
   }
 };
