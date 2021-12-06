@@ -3,9 +3,9 @@ import {filterPosts} from './filter.js';
 
 const MAP_DEFAULT_LAT = 35.660644;
 const MAP_DEFAULT_LNG = 139.782431;
-const MAIN_PIN_ICON = '../img/main-pin.svg';
+const MAIN_PIN_ICON = './img/main-pin.svg';
 const MAIN_PIN_SIZE = 52;
-const PIN_ICON = '../img/pin.svg';
+const PIN_ICON = './img/pin.svg';
 const PIN_SIZE = 40;
 const MAX_POSTS = 10;
 const LOCATION_FLOATING_POINT = 5;
